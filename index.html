@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lucky Dice Game</title>
+    <style type="text/css">
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #555;
+}
+
+#score {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+#guess {
+    width: 50px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#message {
+    color: #ff5722;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Lucky Dice Game</h1>
+    <p>Score: <span id="score">0</span></p>
+    <p>Guess a number between 1 and 6:</p>
+    <input type="number" id="guess" min="1" max="6">
+    <button onclick="rollDice()">Roll Dice</button>
+    <p id="message"></p>
+</body>
+<script>
+const scoreElement = document.getElementById("score");
+const guessElement = document.getElementById("guess");
+const messageElement = document.getElementById("message");
+
+let score = 0;
+
+function rollDice() {
+    const randomNumber = Math.floor(Math.random() * 6) + 1;
+    const playerGuess = parseInt(guessElement.value);
+    console.log(randomNumber)
+
+    if (playerGuess === randomNumber) {
+        score++;
+        messageElement.innerText = "You guessed it right! Your score is now " + score;
+    } else {
+        score = 0;
+        messageElement.innerText = "Wrong guess. Your score is reset to 0.";
+    }
+
+    scoreElement.innerText = score;
+
+    guessElement.value = "";
+}
+
+</script>
+</html>
